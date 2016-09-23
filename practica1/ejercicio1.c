@@ -1,6 +1,6 @@
 /***********************************************/
-/* Programa: ejercicio1     Fecha:             */
-/* Autores:                                    */
+/* Programa: ejercicio1     Fecha: 23/09/2016  */
+/* Autores: Óscar Gómez, Jose Ignacio Gómez    */
 /*                                             */
 /* Programa que genera numeros aleatorios      */
 /* entre dos numeros dados                     */
@@ -35,8 +35,8 @@ int main(int argc, char** argv)
     exit(-1);
   }
   printf("Practica numero 1, apartado 1\n");
-  printf("Realizada por: Vuestros nombres\n");
-  printf("Grupo: Vuestro grupo\n");
+  printf("Realizada por: Óscar Gómez, Jose Ignacio Gómez\n");
+  printf("Grupo: 1201\n");
 
   /* comprueba la linea de comandos */
   for(i = 1; i < argc; i++) {

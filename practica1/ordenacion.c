@@ -19,6 +19,7 @@
 int InsertSort(int* tabla, int ip, int iu)
 {
   /* vuestro codigo */
+	return 0;
 }
 
 /***************************************************/
@@ -28,5 +29,6 @@ int InsertSort(int* tabla, int ip, int iu)
 int InsertSortInv(int* tabla, int ip, int iu)
 {
   /* vuestro codigo */
+	return 0;
 }
 

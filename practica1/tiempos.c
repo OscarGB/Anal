@@ -24,6 +24,7 @@ short tiempo_medio_ordenacion(pfunc_ordena metodo,
                               PTIEMPO ptiempo)
 {
 /* vuestro codigo */
+	return 0;
 }
 
 /***************************************************/
@@ -36,6 +37,7 @@ short genera_tiempos_ordenacion(pfunc_ordena metodo, char* fichero,
                                 int incr, int n_perms)
 {
   /* vuestro codigo */
+	return 0;
 }
 
 /***************************************************/
@@ -47,6 +49,7 @@ short genera_tiempos_ordenacion(pfunc_ordena metodo, char* fichero,
 short guarda_tabla_tiempos(char* fichero, PTIEMPO tiempo, int N)
 {
   /* vuestro codigo */
+	return 0;
 }
 
 
