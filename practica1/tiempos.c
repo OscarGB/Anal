@@ -11,6 +11,7 @@
 
 #include "tiempos.h"
 #include "ordenacion.h"
+#include "permutaciones.h"
 
 /***************************************************/
 /* Funcion: tiempo_medio_ordenacion Fecha:         */
@@ -23,7 +24,36 @@ short tiempo_medio_ordenacion(pfunc_ordena metodo,
                               int tamanio, 
                               PTIEMPO ptiempo)
 {
-/* vuestro codigo */
+  int **perms;
+  int i, time, suma = 0;
+
+  if(!ptiempo){
+    return -1
+  }
+
+  ptiempo->n_perms = n_perms;
+  ptiempo->tamanio = tamanio;
+  ptiempo->max_ob = 0;
+  ptiempo->min_ob = INT_MAX;
+
+  perms = genera_permutaciones(n_perms, tamanio);
+  if(!perms){
+    return -1;
+  }
+
+  for(i = 0; i < n_perms; i++){
+    time = metodo(perms[i], 0, tamanio - 1);
+    suma += time;
+    if(time > ptiempo->max_ob){
+      ptiempo->max_ob = time;
+    }
+    if (time < ptiempo->min_ob){
+      ptiempo->min_ob = time;
+    }
+  }
+
+  ptiempo->medio_ob = (float)(suma/n_perms);
+
 	return 0;
 }
 
