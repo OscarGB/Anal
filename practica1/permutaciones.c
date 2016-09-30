@@ -91,7 +91,7 @@ int aleat_num(int inf, int sup){
 /* o NULL en caso de error                         */
 /***************************************************/
 int* genera_perm(int n){
-	int i, random, aux;
+	int i, random;
 	int* perm = NULL;;
 
 	if(n<1){
@@ -112,7 +112,7 @@ int* genera_perm(int n){
 							del array solo se puede permutar consigo misma*/
 		random= aleat_num(i+1, n-1);
 		if(swap(&(perm[i]), &(perm[random])) == ERR){
-			fprintf(stderr, "PENEEEEE");
+			fprintf(stderr, "Error");
 			free(perm);
 			return NULL;
 		}
