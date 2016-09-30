@@ -123,7 +123,7 @@ int* genera_perm(int n){
 
 /***************************************************/
 /* Funcion: genera_permutaciones Fecha:            */
-/* Autores:                                        */
+/* Autores: Óscar Gómez, Jose Ignacio Gómez        */
 /*                                                 */
 /* Funcion que genera n_perms permutaciones        */
 /* aleatorias de tamanio elementos                 */
