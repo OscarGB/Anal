@@ -44,7 +44,23 @@ int InsertSort(int* tabla, int ip, int iu)
 /***************************************************/
 int InsertSortInv(int* tabla, int ip, int iu)
 {
-  /* vuestro codigo */
-	return 0;
+  int time = 0;
+    int i, j, aux;
+
+    for (i = ip + 1; i <= iu; i++) {
+      aux = tabla[i];
+
+      j = i-1;
+      while (j >= ip && tabla[j] < aux){
+        tabla[j+1] = tabla[j];
+        j--;
+        time++;
+      } 
+      time++;
+
+      tabla[j+1] = aux;
+    }
+
+  return time;
 }
 
