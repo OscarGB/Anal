@@ -140,6 +140,17 @@ int* genera_perm(int n){
 /***************************************************/
 int** genera_permutaciones(int n_perms, int tamanio)
 {
-/* vuestro codigo */
-	return NULL;
+	int i;
+	int **perms;
+
+	perms = (int **) malloc (n_perms * sizeof(int *));
+	if(!perms){
+		return NULL;
+	}
+
+	for (i = 0; i < n_perms; i++){
+		perms[i] = genera_perm(tamanio);
+	}
+
+	return perms;
 }
