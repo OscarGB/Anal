@@ -36,7 +36,7 @@ int main(int argc, char** argv)
   }
   printf("Practica numero 1, apartado 1\n");
   printf("Realizada por: Óscar Gómez, Jose Ignacio Gómez\n");
-  printf("Grupo: 1201\n");
+  printf("Grupo: 1201 (Pareja 4)\n");
 
   /* comprueba la linea de comandos */
   for(i = 1; i < argc; i++) {

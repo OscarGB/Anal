@@ -9,6 +9,10 @@
  *
  */
 
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
 #include "tiempos.h"
 #include "ordenacion.h"
 #include "permutaciones.h"
@@ -25,10 +29,13 @@ short tiempo_medio_ordenacion(pfunc_ordena metodo,
                               PTIEMPO ptiempo)
 {
   int **perms;
-  int i, time, suma = 0;
+  int i; /*ob = operación basica*/
+  double suma = 0, sumaob=0;
+  clock_t start, end; 
+  double time, ob; /*time = tiempo fisico*/
 
   if(!ptiempo){
-    return -1
+    return -1;
   }
 
   ptiempo->n_perms = n_perms;
@@ -42,18 +49,25 @@ short tiempo_medio_ordenacion(pfunc_ordena metodo,
   }
 
   for(i = 0; i < n_perms; i++){
-    time = metodo(perms[i], 0, tamanio - 1);
+    start = clock();
+    ob = metodo(perms[i], 0, tamanio - 1);
+    end = clock();
+    time = (double)(end-start);
+    sumaob += ob;
     suma += time;
-    if(time > ptiempo->max_ob){
-      ptiempo->max_ob = time;
+    if(ob > ptiempo->max_ob){
+      ptiempo->max_ob = ob;
     }
-    if (time < ptiempo->min_ob){
-      ptiempo->min_ob = time;
+    if (ob< ptiempo->min_ob){
+      ptiempo->min_ob = ob;
     }
   }
-
-  ptiempo->medio_ob = (float)(suma/n_perms);
-
+  ptiempo->medio_ob = (double)(sumaob/n_perms);
+  ptiempo->tiempo = (double)(suma/n_perms);
+  for(i = 0; i < n_perms; i++){
+    free(perms[i]);
+  }
+  free(perms);
 	return 0;
 }
 
@@ -66,7 +80,15 @@ short genera_tiempos_ordenacion(pfunc_ordena metodo, char* fichero,
                                 int num_min, int num_max, 
                                 int incr, int n_perms)
 {
-  /* vuestro codigo */
+  int i;
+  PTIEMPO tiempo;
+  tiempo = (PTIEMPO) malloc (sizeof(TIEMPO));
+  remove(fichero);
+  for(i = num_min; i <= num_max; i += incr){
+    tiempo_medio_ordenacion(metodo, n_perms, i, tiempo);
+    guarda_tabla_tiempos(fichero, tiempo, 1);
+  }
+  free(tiempo);
 	return 0;
 }
 
@@ -78,8 +100,14 @@ short genera_tiempos_ordenacion(pfunc_ordena metodo, char* fichero,
 /***************************************************/
 short guarda_tabla_tiempos(char* fichero, PTIEMPO tiempo, int N)
 {
-  /* vuestro codigo */
-	return 0;
+  FILE* f = NULL;;
+  f = fopen(fichero, "a");
+  if(!f){
+    return -1;
+  }
+  fprintf(f, "%-20d%-20.1f%-20.1f%-20d%-20d \n", tiempo->tamanio, tiempo->tiempo, tiempo->medio_ob, tiempo->max_ob, tiempo->min_ob);
+	fclose(f);
+  return 0;
 }
 
 
