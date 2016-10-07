@@ -105,7 +105,7 @@ short guarda_tabla_tiempos(char* fichero, PTIEMPO tiempo, int N)
   if(!f){
     return -1;
   }
-  fprintf(f, "%-20d%-20.1f%-20.1f%-20d%-20d \n", tiempo->tamanio, tiempo->tiempo, tiempo->medio_ob, tiempo->max_ob, tiempo->min_ob);
+  fprintf(f, "%-20d%-20.1f%-20.1f%-20d%-20d\n", tiempo->tamanio, tiempo->tiempo, tiempo->medio_ob, tiempo->max_ob, tiempo->min_ob);
 	fclose(f);
   return 0;
 }
