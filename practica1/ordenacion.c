@@ -13,8 +13,9 @@
 #include "ordenacion.h"
 
 /***************************************************/
-/* Funcion: InsertSort    Fecha:                   */
-/* Vuestro comentario                              */
+/* Funcion: InsertSort    Fecha: 25/08/2016        */
+/* Función de ordenacion para tablas de menor a    */
+/* mayor                                           */
 /***************************************************/
 int InsertSort(int* tabla, int ip, int iu)
 {
@@ -39,8 +40,9 @@ int InsertSort(int* tabla, int ip, int iu)
 }
 
 /***************************************************/
-/* Funcion: InsertSortInv    Fecha:                   */
-/* Vuestro comentario                              */
+/* Funcion: InsertSortInv    Fecha:   26/08/2016   */
+/* Función de ordenacion para tablas de mayor a    */
+/* menor                                           */
 /***************************************************/
 int InsertSortInv(int* tabla, int ip, int iu)
 {
