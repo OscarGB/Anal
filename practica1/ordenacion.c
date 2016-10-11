@@ -3,9 +3,9 @@
  * Descripcion: Implementacion de funciones de ordenacion 
  *
  * Fichero: ordenacion.c
- * Autor: Carlos Aguirre
+ * Autor: Óscar Gómez, Jose Ignacio Gómez
  * Version: 1.0
- * Fecha: 16-09-2016
+ * Fecha: 30-09-2016
  *
  */
 
@@ -13,7 +13,7 @@
 #include "ordenacion.h"
 
 /***************************************************/
-/* Funcion: InsertSort    Fecha: 25/08/2016        */
+/* Funcion: InsertSort    Fecha: 30/09/2016        */
 /* Función de ordenacion para tablas de menor a    */
 /* mayor                                           */
 /***************************************************/
@@ -40,7 +40,7 @@ int InsertSort(int* tabla, int ip, int iu)
 }
 
 /***************************************************/
-/* Funcion: InsertSortInv    Fecha:   26/08/2016   */
+/* Funcion: InsertSortInv    Fecha:   30/09/2016   */
 /* Función de ordenacion para tablas de mayor a    */
 /* menor                                           */
 /***************************************************/

@@ -18,10 +18,10 @@
 #include "permutaciones.h"
 
 /***************************************************/
-/* Funcion: tiempo_medio_ordenacion Fecha:         */
+/* Funcion: tiempo_medio_ordenacion Fecha:2/10/2016*/
 /*                                                 */
-/* Vuestra documentacion (formato igual            */
-/* que en el primer apartado):                     */
+/* Rutina que guarda en una escritura PTIEMPO los  */
+/* datos necesarios para el análisis temporal      */
 /***************************************************/
 short tiempo_medio_ordenacion(pfunc_ordena metodo, 
                               int n_perms,
@@ -63,7 +63,7 @@ short tiempo_medio_ordenacion(pfunc_ordena metodo,
     }
   }
   ptiempo->medio_ob = (double)(sumaob/n_perms);
-  ptiempo->tiempo = (double)(suma/n_perms);
+  ptiempo->tiempo = (double)(suma/n_perms)/CLOCKS_PER_SEC;
   for(i = 0; i < n_perms; i++){
     free(perms[i]);
   }
@@ -71,11 +71,12 @@ short tiempo_medio_ordenacion(pfunc_ordena metodo,
 	return 0;
 }
 
-/***************************************************/
-/* Funcion: genera_tiempos_ordenacion Fecha:       */
-/*                                                 */
-/* Vuestra documentacion                           */
-/***************************************************/
+/******************************************************/
+/* Funcion: genera_tiempos_ordenacion Fecha: 2/10/2016*/
+/*                                                    */
+/* Rutina usada para generar todos los tiempos de     */
+/* ordenación para su posterior escritura en fichero  */
+/******************************************************/
 short genera_tiempos_ordenacion(pfunc_ordena metodo, char* fichero, 
                                 int num_min, int num_max, 
                                 int incr, int n_perms)
@@ -93,10 +94,10 @@ short genera_tiempos_ordenacion(pfunc_ordena metodo, char* fichero,
 }
 
 /***************************************************/
-/* Funcion: guarda_tabla_tiempos Fecha:            */
+/* Funcion: guarda_tabla_tiempos Fecha:02/10/2016  */
 /*                                                 */
-/* Vuestra documentacion (formato igual            */
-/* que en el primer apartado):                     */
+/* Rutina que escribe en un fichero los datos      */
+/* obtenidos                                       */
 /***************************************************/
 short guarda_tabla_tiempos(char* fichero, PTIEMPO tiempo, int N)
 {
