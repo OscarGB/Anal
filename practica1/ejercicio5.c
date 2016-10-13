@@ -1,6 +1,6 @@
 /***********************************************************/
-/* Programa: ejercicio5                  Fecha:            */
-/* Autores:                                                */
+/* Programa: ejercicio5                  Fecha: 08/10/2016 */
+/* Autores:Óscar Gómez, Jose Ignacio Gómez                 */
 /*                                                         */
 /* Programa que escribe en un fichero                      */
 /* los tiempos medios del algoritmo de                     */

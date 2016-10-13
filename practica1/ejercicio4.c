@@ -1,6 +1,6 @@
 /**************************************************/
-/* Programa: ejercicio4       Fecha:              */
-/* Autores:                                       */
+/* Programa: ejercicio4       Fecha: 29/09/2016   */
+/* Autores: Óscar Gómez, Jose Ignacio Gómez       */
 /*                                                */
 /* Programa que Comprueba SelectSort              */
 /*                                                */

@@ -1,6 +1,6 @@
 /**************************************************/
-/* Programa: ejercicio3       Fecha:              */
-/* Autores:                                       */
+/* Programa: ejercicio3       Fecha: 28/09/2016   */
+/* Autores: Óscar Gómez, Jose Ignacio Gómez       */
 /*                                                */
 /* Programa que genera permutaciones N            */
 /* aleatorias de M elementos                      */
