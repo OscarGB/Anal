@@ -63,7 +63,7 @@ short tiempo_medio_ordenacion(pfunc_ordena metodo,
     }
   }
   ptiempo->medio_ob = (double)(sumaob/n_perms);
-  ptiempo->tiempo = (double)(suma/n_perms)/CLOCKS_PER_SEC;
+  ptiempo->tiempo = (double)(suma/n_perms); /*Hemos decidido no dividir entre CLOCKS_PER_SEC para poder hacer una comparación más precisa*/
   for(i = 0; i < n_perms; i++){
     free(perms[i]);
   }

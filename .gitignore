@@ -36,3 +36,6 @@ ejercicio5
 # Debug files
 *.dSYM/
 *.su
+
+# Temporal files
+.~*
