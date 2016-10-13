@@ -63,7 +63,7 @@ short tiempo_medio_ordenacion(pfunc_ordena metodo,
     }
   }
   ptiempo->medio_ob = (double)(sumaob/n_perms);
-  ptiempo->tiempo = (double)(suma/n_perms); /*Hemos decidido no dividir entre CLOCKS_PER_SEC para poder hacer una comparación más precisa*/
+  ptiempo->tiempo = (double)(suma/n_perms)/CLOCKS_PER_SEC; /*Hemos decidido no dividir entre CLOCKS_PER_SEC para poder hacer una comparación más precisa*/
   for(i = 0; i < n_perms; i++){
     free(perms[i]);
   }
@@ -106,7 +106,7 @@ short guarda_tabla_tiempos(char* fichero, PTIEMPO tiempo, int N)
   if(!f){
     return -1;
   }
-  fprintf(f, "%-20d%-20.1f%-20.1f%-20d%-20d\n", tiempo->tamanio, tiempo->tiempo, tiempo->medio_ob, tiempo->max_ob, tiempo->min_ob);
+  fprintf(f, "%-20d%-20.8f%-20.1f%-20d%-20d\n", tiempo->tamanio, tiempo->tiempo, tiempo->medio_ob, tiempo->max_ob, tiempo->min_ob);
 	fclose(f);
   return 0;
 }
