@@ -154,11 +154,14 @@ int MergeSort(int* tabla, int ip, int iu){
   if(aux == ERR){
     return ERR;
   }
+  ob += aux;
 
   aux = MergeSort(tabla, m+1, iu); /*Tabla inferior*/
   if(aux == ERR){
     return ERR;
   }
+
+  ob += aux;
 
  
 
@@ -166,7 +169,8 @@ int MergeSort(int* tabla, int ip, int iu){
   if(aux == ERR){
     return ERR;
   }
-  ob = ob + aux; /*Contador de operaciones básicas*/
+
+  ob += aux; /*Contador de operaciones básicas*/
 
   return ob;
 }
