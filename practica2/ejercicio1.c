@@ -29,7 +29,7 @@ int main(int argc, char** argv)
     fprintf(stderr, " -tamanio : numero elementos permutacion.\n");
     return 0;
   }
-  printf("Practica numero 1, apartado 4\n");
+  printf("Practica numero 2, apartado 1\n");
   printf("Realizada por: José Ignacio Gómez, Óscar Gómez\n");
   printf("Grupo: 1201 (Pareja 4)\n");
 
@@ -48,11 +48,11 @@ int main(int argc, char** argv)
     printf("Error: No hay memoria\n");
     exit(-1);
   }
-
-  ret = InsertSort(perm, 0, tamano-1);
+  
+  ret = MergeSort(perm, 0, tamano-1);
 
   if (ret == ERR) {
-    printf("Error: Error en InsertSort\n");
+    printf("Error: Error en MergeSort\n");
     free(perm);
     exit(-1);
   }
