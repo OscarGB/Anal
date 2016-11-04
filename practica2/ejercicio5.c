@@ -22,16 +22,17 @@
 #include <time.h>
 #include "ordenacion.h"
 #include "tiempos.h"
+#include "glob.h"
 
 int main(int argc, char** argv)
 {
   int i, num_min, num_max, incr, n_perms;
-  char nombre[256];
+  char nombre1[256], nombre2[256], nombre3[256];
   short ret;
 
   srand(time(NULL));
 
-  if (argc != 11) {
+  if (argc != 15) {
     fprintf(stderr, "Error en los parametros de entrada:\n\n");
     fprintf(stderr, "%s -num_min <int> -num_max <int> -incr <int>\n", argv[0]);
     fprintf(stderr, "\t\t -numP <int> -fichSalida <string> \n");
@@ -40,7 +41,9 @@ int main(int argc, char** argv)
     fprintf(stderr, "-num_max: numero minimo de elementos de la tabla\n");
     fprintf(stderr, "-incr: incremento\n");
     fprintf(stderr, "-numP: Introduce el numero de permutaciones a promediar\n");
-    fprintf(stderr, "-fichSalida: Nombre del fichero de salida\n");
+    fprintf(stderr, "-fichSalida1: Nombre del fichero de salida1\n");
+    fprintf(stderr, "-fichSalida2: Nombre del fichero de salida2\n");
+    fprintf(stderr, "-fichSalida3: Nombre del fichero de salida3\n");
     exit(-1);
   }
 
@@ -58,19 +61,38 @@ int main(int argc, char** argv)
       incr = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-numP") == 0) {
       n_perms = atoi(argv[++i]);
-    } else if (strcmp(argv[i], "-fichSalida") == 0) {
-      strcpy(nombre, argv[++i]);
-    } else {
+    } else if (strcmp(argv[i], "-fichSalida1") == 0) {
+      strcpy(nombre1, argv[++i]);
+    } else if (strcmp(argv[i], "-fichSalida2") == 0){
+      strcpy(nombre2, argv[++i]);
+    } else if (strcmp(argv[i], "-fichSalida3") == 0){
+      strcpy(nombre3, argv[++i]);
+    } else{
       fprintf(stderr, "Parametro %s es incorrecto\n", argv[i]);
     }
   }
 
-  /* calculamos los tiempos */
-  ret = genera_tiempos_ordenacion(MergeSort, nombre,num_min, num_max,incr, n_perms);
+  /* calculamos los tiempos con tipo 1*/
+  ret = genera_tiempos_ordenacion(QuickSortIni, nombre1, num_min, num_max,incr, n_perms);
   if (ret == ERR) { /* ERR_TIME debera ser un numero negativo */
-    printf("Error en la funcion Time_Ordena\n");
+    printf("Error en la funcion Time_Ordena de tipo 1\n");
     exit(-1);
   }
+
+  /* calculamos los tiempos con tipo 2*/
+  ret = genera_tiempos_ordenacion(QuickSortAvg, nombre2, num_min, num_max,incr, n_perms);
+  if (ret == ERR) { /* ERR_TIME debera ser un numero negativo */
+    printf("Error en la funcion Time_Ordena de tipo 2\n");
+    exit(-1);
+  }
+
+  /* calculamos los tiempos con tipo 2*/
+  ret = genera_tiempos_ordenacion(QuickSortStat, nombre3, num_min, num_max,incr, n_perms);
+  if (ret == ERR) { /* ERR_TIME debera ser un numero negativo */
+    printf("Error en la funcion Time_Ordena de tipo 3\n");
+    exit(-1);
+  }
+
   printf("Salida correcta \n");
 
   return 0;

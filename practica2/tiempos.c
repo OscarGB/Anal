@@ -101,7 +101,7 @@ short genera_tiempos_ordenacion(pfunc_ordena metodo, char* fichero,
 /***************************************************/
 short guarda_tabla_tiempos(char* fichero, PTIEMPO tiempo, int N)
 {
-  FILE* f = NULL;;
+  FILE* f = NULL;
   f = fopen(fichero, "a");
   if(!f){
     return -1;

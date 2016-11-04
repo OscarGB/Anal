@@ -5,7 +5,7 @@
 
 CC = gcc -ansi -pedantic
 CFLAGS = -Wall
-EXE = ejercicio1 ejercicio2
+EXE = ejercicio1 ejercicio2 ejercicio3 ejercicio4 ejercicio5
 all : $(EXE)
 
 .PHONY : clean

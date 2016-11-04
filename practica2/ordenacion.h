@@ -19,6 +19,7 @@
   #define OK (!(ERR))
 #endif
 
+
 /* definiciones de tipos */
 typedef int (* pfunc_ordena)(int*, int, int);
 
@@ -27,5 +28,8 @@ typedef int (* pfunc_ordena)(int*, int, int);
 int InsertSort(int* tabla, int ip, int iu);
 int InsertSortInv(int* tabla, int ip, int iu);
 int MergeSort(int* tabla, int ip, int iu);
+int QuickSortIni(int* tabla, int ip, int iu);
+int QuickSortAvg(int* tabla, int ip, int iu);
+int QuickSortStat(int* tabla, int ip, int iu);
 
 #endif

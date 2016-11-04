@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "ordenacion.h"
+#include "permutaciones.h"
 
 /***************************************************/
 /* Funcion: InsertSort    Fecha: 30/09/2016        */
@@ -174,3 +175,176 @@ int MergeSort(int* tabla, int ip, int iu){
 
   return ob;
 }
+
+
+/***************************************************/
+/* Funcion: Medio    Fecha: 04/11/2016             */
+/* Función privada de QuickSort                    */
+/*                                                 */
+/***************************************************/
+int Medio(int *tabla, int ip, int iu,int *pos){
+  *pos = ip;
+  return 0;
+}
+
+
+/***************************************************/
+/* Funcion: MedioAvg Fecha: 04/11/2016             */
+/* Función privada de QuickSort                    */
+/*                                                 */
+/***************************************************/
+int MedioAvg(int *tabla, int ip, int iu, int *pos){
+  *pos = (int)(ip + iu) / 2;
+  return 0;
+}
+
+/***************************************************/
+/* Funcion: MedioStat Fecha: 04/11/2016            */
+/* Función privada de QuickSort                    */
+/*                                                 */
+/***************************************************/
+int MedioStat(int *tabla, int ip, int iu, int *pos){
+  int medio;
+  medio = (int)(ip + iu) / 2;
+
+  if(tabla[ip] > tabla[medio]){
+    if(tabla[ip] > tabla[iu]){
+      if(tabla[medio] > tabla[iu]){
+        *pos = medio;
+        return 3; /*Por las comparaciones*/
+      }
+      else{
+        *pos = iu;
+        return 3; /*Por las comparaciones*/
+      }
+    }
+    else{
+      *pos = ip;
+      return 2; /*Por las comparaciones*/
+    }
+  }
+  else{
+    if(tabla[ip] < tabla[iu]){
+      if(tabla[medio] < tabla[iu]){
+        *pos = medio;
+        return 3; /*Por las comparaciones*/
+      }
+      else{
+        *pos = iu;
+        return 3; /*Por las comparaciones*/
+      }
+    }
+    else{
+      *pos = ip;
+      return 2; /*Por las comparaciones*/
+    }
+  }
+}
+
+/***************************************************/
+/* Funcion: Partir   Fecha: 04/11/2016             */
+/* Función privada de QuickSort                    */
+/*                                                 */
+/***************************************************/
+int Partir(int* tabla, int ip, int iu,int *pos, int tipo){
+  int contador = 0;
+  int k, i;
+  if(tipo == 1){
+    contador += Medio(tabla, ip, iu, pos);
+  }
+  else if(tipo == 2){
+    contador += MedioAvg(tabla, ip, iu, pos);
+  }
+  else if(tipo == 3){
+    contador += MedioStat(tabla, ip, iu, pos);
+  }
+  k = tabla[*pos];
+  swap(&tabla[ip], &tabla[*pos]);
+  *pos = ip;
+  for(i = ip + 1; i<= iu; i++){
+    if(tabla[i] < k){
+      (*(pos))++;
+      swap(&tabla[i], &tabla[*pos]);
+    }
+    contador++;
+  }
+  swap(&tabla[ip], &tabla[*pos]);
+  return contador;
+}
+
+
+/***************************************************/
+/* Funcion: QuickSort    Fecha: 04/11/2016         */
+/* Función de ordenacion para tablas de menor a    */
+/* mayor                                           */
+/***************************************************/
+int QuickSortIni(int* tabla, int ip, int iu){
+  int m;
+  int contador = 0;
+  if(ip > iu){
+    return ERR;
+  }
+  if(ip == iu){
+    return OK;
+  }
+
+  contador += Partir(tabla, ip, iu, &m, 1);
+  if(ip < (m - 1)){
+    contador += QuickSortIni(tabla, ip, m-1);
+  }
+  if((m + 1) < iu){
+    contador += QuickSortIni(tabla, m+1, iu);
+  }
+  return contador;
+}
+
+/***************************************************/
+/* Funcion: QuickSortAvg Fecha: 04/11/2016         */
+/* Función de ordenacion para tablas de menor a    */
+/* mayor                                           */
+/***************************************************/
+int QuickSortAvg(int* tabla, int ip, int iu){
+  int m;
+  int contador = 0;
+  if(ip > iu){
+    return ERR;
+  }
+  if(ip == iu){
+    return OK;
+  }
+
+  contador += Partir(tabla, ip, iu, &m, 2);
+  if(ip < (m - 1)){
+    contador += QuickSortAvg(tabla, ip, m-1);
+  }
+  if((m + 1) < iu){
+    contador += QuickSortAvg(tabla, m+1, iu);
+  }
+  return contador;
+}
+
+/***************************************************/
+/* Funcion: QuickSortStat  Fecha: 04/11/2016       */
+/* Función de ordenacion para tablas de menor a    */
+/* mayor                                           */
+/***************************************************/
+int QuickSortStat(int* tabla, int ip, int iu){
+  int m;
+  int contador = 0;
+  if(ip > iu){
+    return ERR;
+  }
+  if(ip == iu){
+    return OK;
+  }
+
+  contador += Partir(tabla, ip, iu, &m, 3);
+  if(ip < (m - 1)){
+    contador += QuickSortStat(tabla, ip, m-1);
+  }
+  if((m + 1) < iu){
+    contador += QuickSortStat(tabla, m+1, iu);
+  }
+  return contador;
+}
+
