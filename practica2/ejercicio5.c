@@ -35,7 +35,7 @@ int main(int argc, char** argv)
   if (argc != 15) {
     fprintf(stderr, "Error en los parametros de entrada:\n\n");
     fprintf(stderr, "%s -num_min <int> -num_max <int> -incr <int>\n", argv[0]);
-    fprintf(stderr, "\t\t -numP <int> -fichSalida <string> \n");
+    fprintf(stderr, "\t\t -numP <int> -fichSalida1 <string> -fichSalida2 <string> -fichSalida3 <string>\n");
     fprintf(stderr, "Donde:\n");
     fprintf(stderr, "-num_min: numero minimo de elementos de la tabla\n");
     fprintf(stderr, "-num_max: numero minimo de elementos de la tabla\n");
@@ -47,7 +47,7 @@ int main(int argc, char** argv)
     exit(-1);
   }
 
-  printf("Practica numero 2, apartado 2\n");
+  printf("Practica numero 2, apartado 5\n");
   printf("Realizada por: Jose Ignacio Gómez, Óscar Gómez\n");
   printf("Grupo: 1201 (Pareja 4)\n");
 

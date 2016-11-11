@@ -42,25 +42,24 @@ permutaciones.o : permutaciones.c permutaciones.h
 	
 ejercicio1_test:
 	@echo Ejecutando ejercicio1
-	@./ejercicio1 -limInf 1 -limSup 5 -numN 10
+	@./ejercicio1 -tamanio 20
 
 ejercicio2_test:
 	@echo Ejecutando ejercicio2
-	@./ejercicio2 -tamanio 1 -numP 5
+	@./ejercicio2 -num_min 200 -num_max 2000 -incr 10 -numP 100 -fichSalida ej2.log 
 
 ejercicio3_test:
 	@echo Ejecutando ejercicio3
-	@./ejercicio3 -tamanio 1 -numP 5
+	@./ejercicio3 -tamanio 50
 
 ejercicio4_test:
 	@echo Ejecutando ejercicio4
-	@./ejercicio4 -tamanio 1
+	@./ejercicio4 -num_min 200 -num_max 2000 -incr 10 -numP 100 -fichSalida ej4.log  
+
 
 ejercicio5_test:
 	@echo Ejecutando ejercicio5
-	@./ejercicio5 -num_min 1 -num_max 5 -incr 1 -numP 5 -fichSalida ejercicio5.log
+	@./ejercicio5 -num_min 200 -num_max 2000 -incr 10 -numP 100 -fichSalida1 Ini.log -fichSalida2 Avg.log -fichSalida3 Stat.log
 
-ejercicio6_test:
-	@echo Ejecutando ejercicio6
-	@./ejercicio6 -num_min 1 -num_max 5 -incr 1 -numP 5 -fichSalida ejercicio6.log
+
 
