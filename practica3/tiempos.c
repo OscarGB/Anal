@@ -182,7 +182,7 @@ short tiempo_medio_busqueda(pfunc_busqueda metodo, pfunc_generador_claves genera
     }
   }
 
-  ptiempo->medio_ob = (double)(sumaob/n_veces);
+  ptiempo->medio_ob = (double)(sumaob/(n_veces * n_claves));
   ptiempo->tiempo = (double)(suma/(n_veces * n_claves))/CLOCKS_PER_SEC; /*Hemos decidido no dividir entre CLOCKS_PER_SEC para poder hacer una comparación más precisa*/
   
   libera_diccionario(pdicc);

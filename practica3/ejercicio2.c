@@ -28,13 +28,13 @@
 
 int main(int argc, char** argv)
 {
-  int i, num_min,num_max,incr,n_veces, n_claves;
+  int i, num_min,num_max,incr,n_veces;
   char nombre[256];
   short ret;
  
   srand(time(NULL));
 
-  if (argc != 13) {
+  if (argc != 11) {
     fprintf(stderr, "Error en los parametros de entrada:\n\n");
     fprintf(stderr, "%s -num_min <int> -num_max <int> -incr <int>\n", argv[0]);
     fprintf(stderr, "\t\t -n_claves <int> -n_veces <int> -fichSalida <string> \n");
@@ -42,7 +42,6 @@ int main(int argc, char** argv)
     fprintf(stderr, "-num_min: numero minimo de elementos de la tabla\n");
     fprintf(stderr, "-num_max: numero minimo de elementos de la tabla\n");
     fprintf(stderr, "-incr: incremento\n");
-    fprintf(stderr, "-n_claves: numero de claves a buscar.\n");
     fprintf(stderr, "-n_veces: numero de veces que se busca cada clave\n");
     fprintf(stderr, "-fichSalida: Nombre del fichero de salida\n");
     exit(-1);
@@ -60,8 +59,6 @@ int main(int argc, char** argv)
       num_max = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-incr") == 0) {
       incr = atoi(argv[++i]);
-    } else if (strcmp(argv[i], "-n_claves") == 0) {
-      n_claves = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-n_veces") == 0) {
       n_veces = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-fichSalida") == 0) {
@@ -73,7 +70,7 @@ int main(int argc, char** argv)
   }
 
   /* calculamos los tiempos */
-  ret = genera_tiempos_busqueda(blin, generador_claves_uniforme, NO_ORDENADO, 
+  ret = genera_tiempos_busqueda(bbin, generador_claves_uniforme, ORDENADO, 
                                 nombre, num_min, num_max, incr, n_veces);
   if (ret == ERR) { 
     printf("Error en la funcion genera_tiempos_busqueda\n");

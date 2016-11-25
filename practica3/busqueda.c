@@ -152,7 +152,7 @@ int insercion_masiva_diccionario (PDICC pdicc,int *claves, int n_claves)
 	int i;
 	int res;
 
-	if(!pdicc || !claves || n_claves < 1 || n_claves > MAX_TAM){
+	if(!pdicc || !claves || n_claves < 1){
 		return -1;
 	}
 	for(i = 0; i < n_claves; i++){

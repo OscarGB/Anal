@@ -25,7 +25,6 @@
 #define ORDENADO 1
 #define NO_ORDENADO 0
 
- #define MAX_TAM 1000
 
 /* definiciones de tipos */
 typedef struct diccionario {
