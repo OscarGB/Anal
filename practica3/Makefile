@@ -5,19 +5,19 @@
 
 CC = gcc -ansi -pedantic
 CFLAGS = -Wall
-EXE = ejercicio1 ejercicio2 ejercicio3 ejercicio4 ejercicio5
+EXE = ejercicio1 ejercicio2
 all : $(EXE)
 
 .PHONY : clean
 clean :
 	rm -f *.o core $(EXE)
 
-$(EXE) : % : %.o ordenacion.o tiempos.o permutaciones.o
+$(EXE) : % : %.o ordenacion.o tiempos.o permutaciones.o busqueda.o
 	@echo "#---------------------------"
 	@echo "# Generando $@ "
 	@echo "# Depende de $^"
 	@echo "# Ha cambiado $<"
-	$(CC) $(CFLAGS) -o $@ $@.o ordenacion.o tiempos.o permutaciones.o
+	$(CC) $(CFLAGS) -o $@ $@.o ordenacion.o tiempos.o permutaciones.o busqueda.o
 
 permutaciones.o : permutaciones.c permutaciones.h
 	@echo "#---------------------------"
@@ -26,14 +26,21 @@ permutaciones.o : permutaciones.c permutaciones.h
 	@echo "# Ha cambiado $<"
 	$(CC) $(CFLAGS) -c $<
 
- ordenacion.o : ordenacion.c ordenacion.h
+ordenacion.o : ordenacion.c ordenacion.h
 	@echo "#---------------------------"
 	@echo "# Generando $@"
 	@echo "# Depende de $^"
 	@echo "# Ha cambiado $<"
 	$(CC) $(CFLAGS) -c $<
 
- tiempos.o : tiempos.c tiempos.h
+tiempos.o : tiempos.c tiempos.h
+	@echo "#---------------------------"
+	@echo "# Generando $@"
+	@echo "# Depende de $^"
+	@echo "# Ha cambiado $<"
+	$(CC) $(CFLAGS) -c $<
+
+busqueda.o : busqueda.c busqueda.h
 	@echo "#---------------------------"
 	@echo "# Generando $@"
 	@echo "# Depende de $^"
