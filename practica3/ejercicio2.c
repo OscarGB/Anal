@@ -29,12 +29,12 @@
 int main(int argc, char** argv)
 {
   int i, num_min,num_max,incr,n_veces;
-  char nombre[256];
+  char nombre[256], tipo[256];
   short ret;
  
   srand(time(NULL));
 
-  if (argc != 11) {
+  if (argc != 13) {
     fprintf(stderr, "Error en los parametros de entrada:\n\n");
     fprintf(stderr, "%s -num_min <int> -num_max <int> -incr <int>\n", argv[0]);
     fprintf(stderr, "\t\t -n_claves <int> -n_veces <int> -fichSalida <string> \n");
@@ -43,13 +43,11 @@ int main(int argc, char** argv)
     fprintf(stderr, "-num_max: numero minimo de elementos de la tabla\n");
     fprintf(stderr, "-incr: incremento\n");
     fprintf(stderr, "-n_veces: numero de veces que se busca cada clave\n");
+    fprintf(stderr, "-tipo [blin, bbin, blin_auto]: tipo de búsqueda a realizar\n");
     fprintf(stderr, "-fichSalida: Nombre del fichero de salida\n");
     exit(-1);
   }
 
-  printf("Practica numero 3, apartado 2\n");
-  printf("Realizada por: Vuestros nombres\n");
-  printf("Grupo: Vuestro grupo\n");
 
   /* comprueba la linea de comandos */
   for(i = 1; i < argc ; i++) {
@@ -61,6 +59,8 @@ int main(int argc, char** argv)
       incr = atoi(argv[++i]);
     } else if (strcmp(argv[i], "-n_veces") == 0) {
       n_veces = atoi(argv[++i]);
+    } else if (strcmp(argv[i], "-tipo") == 0) {
+      strcpy(tipo, argv[++i]);
     } else if (strcmp(argv[i], "-fichSalida") == 0) {
       strcpy(nombre, argv[++i]);
     } else {
@@ -70,13 +70,38 @@ int main(int argc, char** argv)
   }
 
   /* calculamos los tiempos */
-  ret = genera_tiempos_busqueda(bbin, generador_claves_uniforme, ORDENADO, 
+  if(strcmp(tipo, "bbin") == 0){
+    ret = genera_tiempos_busqueda(bbin, generador_claves_uniforme, ORDENADO, 
                                 nombre, num_min, num_max, incr, n_veces);
-  if (ret == ERR) { 
-    printf("Error en la funcion genera_tiempos_busqueda\n");
-    exit(-1);
+    if (ret == ERR) { 
+      printf("Error en la funcion genera_tiempos_busqueda para busqueda binaria\n");
+      exit(-1);
+    }
+  }
+  else if(strcmp(tipo, "blin") == 0){
+    ret = genera_tiempos_busqueda(blin, generador_claves_uniforme, NO_ORDENADO, 
+                                nombre, num_min, num_max, incr, n_veces);
+    if (ret == ERR) { 
+      printf("Error en la funcion genera_tiempos_busqueda para busqueda linal\n");
+      exit(-1);
+    }
+  }
+  else if(strcmp(tipo, "blin_auto") == 0){
+    ret = genera_tiempos_busqueda(blin_auto, generador_claves_potencial, NO_ORDENADO, 
+                                nombre, num_min, num_max, incr, n_veces);
+    if (ret == ERR) { 
+      printf("Error en la funcion genera_tiempos_busqueda para busqueda linal auto\n");
+      exit(-1);
+    }
+  }else{
+    printf("Por favor, especifique un tipo adecuado: bbin, blin o blin_auto\n");
+    return 0;
   }
 
+  printf("Practica numero 3, apartado 2\n");
+  printf("Realizada por: Vuestros nombres\n");
+  printf("Grupo: Vuestro grupo\n");
+  
   printf("Salida correcta \n");
 
   return 0;
