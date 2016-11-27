@@ -37,7 +37,7 @@ int main(int argc, char** argv)
   if (argc != 13) {
     fprintf(stderr, "Error en los parametros de entrada:\n\n");
     fprintf(stderr, "%s -num_min <int> -num_max <int> -incr <int>\n", argv[0]);
-    fprintf(stderr, "\t\t -n_claves <int> -n_veces <int> -fichSalida <string> \n");
+    fprintf(stderr, "\t\t -n_veces <int> -tipo <string> -fichSalida <string> \n");
     fprintf(stderr, "Donde:\n");
     fprintf(stderr, "-num_min: numero minimo de elementos de la tabla\n");
     fprintf(stderr, "-num_max: numero minimo de elementos de la tabla\n");
