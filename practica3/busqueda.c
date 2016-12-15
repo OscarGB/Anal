@@ -266,7 +266,12 @@ int blin_auto(int *tabla,int P,int U,int clave,int *ppos)
     for(i = P; i <= U; i++){
         obs++;
         if(clave == tabla[i]) {
-            *ppos = i-1;
+        	if(i != 0){
+            	*ppos = i-1;
+        	}
+        	else{
+        		*ppos = i;
+        	}
             flag = 1;
             if(i > 0){
             	swap(&tabla[i], &tabla[i-1]);
