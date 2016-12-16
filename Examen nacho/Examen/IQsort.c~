@@ -1,0 +1,104 @@
+#include "IQsort.h"
+#include "permutaciones.h"
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int Medio(int *tabla, int ip, int iu,int *pos){
+  *pos = ip;
+  return 0;
+}
+
+int Partir(int* tabla, int ip, int iu,int *pos, int tipo){
+  int contador = 0;
+  int k, i;
+  if(tipo == 1){
+    contador += Medio(tabla, ip, iu, pos);
+  }
+  k = tabla[*pos];
+  swap(&tabla[ip], &tabla[*pos]);
+  *pos = ip;
+  for(i = ip + 1; i<= iu; i++){
+    if(tabla[i] < k){
+      (*(pos))++;
+      swap(&tabla[i], &tabla[*pos]);
+    }
+    contador++;
+  }
+  swap(&tabla[ip], &tabla[*pos]);
+  return contador;
+}
+
+int InsertSort(int* tabla, int ip, int iu)
+{
+  	int time = 0;
+  	int i, j, aux;
+
+  	for (i = ip + 1; i <= iu; i++) {
+  		aux = tabla[i];
+
+  		j = i-1;
+  		while (j >= ip && tabla[j] > aux){
+  			tabla[j+1] = tabla[j];
+  			j--;
+  			time++;
+  		} 
+  		time++;
+
+  		tabla[j+1] = aux;
+  	}
+
+	return time;
+}
+
+
+
+int InsertQuickSort(int* tabla, int ip, int iu, int L){
+	int tamanio = 0;
+	int m;
+	int contador = 0;
+	int i;
+
+	tamanio = (iu - ip) + 1;
+
+
+	if(tamanio <= L){
+		return InsertSort(tabla, ip, iu);
+	}
+
+	else{
+		if(ip > iu){
+			return ERR;
+		}
+		if(ip == iu){
+			return OK;
+		}
+
+		contador += Partir(tabla, ip, iu, &m, 1);
+		if(ip < (m - 1)){
+			contador += InsertQuickSort(tabla, ip, m-1, L);
+		}
+		if((m + 1) < iu){
+			contador += InsertQuickSort(tabla, m+1, iu, L);
+		}
+		return contador;
+	}
+}
+
+int InsertQuickSort100(int* tabla, int ip, int iu){
+	return InsertQuickSort(tabla, ip, iu, 100);
+}
+
+int InsertQuickSort200(int* tabla, int ip, int iu){
+	return InsertQuickSort(tabla, ip, iu, 200);
+}
+
+int InsertQuickSort300(int* tabla, int ip, int iu){
+	return InsertQuickSort(tabla, ip, iu, 300);
+}
+
+int InsertQuickSort400(int* tabla, int ip, int iu){
+	return InsertQuickSort(tabla, ip, iu, 400);
+}
+
+

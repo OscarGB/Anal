@@ -1,0 +1,4 @@
+Podemos apreciar que, hablando de operaciones básicas, QuickSort es la más eficaz, mientras que las gráficas de InsertQuickSort van en orden ascendente: 100, 200, 300, 400.
+En cuanto a tiempos, QuickSort es la que tiene los tiempos más altos, mientras que los tiempos de ejecución de las de InsertQuickSort son bastante similares.
+
+La diferencia entre las operaciones básicas parece deberse a que InsertSort realiza más operaciones básicas por llamada que QuickSort. En cuanto a los tiempos, QuickSort es menos eficaz debido a sus llamadas recursivas, que afectan al tiempo de ejecición.

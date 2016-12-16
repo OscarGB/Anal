@@ -1,0 +1,44 @@
+CC = gcc -ansi -pedantic -O3
+CFLAGS = -Wall
+EXE = ejercicio4
+all : $(EXE)
+
+.PHONY : clean
+clean :
+	rm -f *.o core $(EXE)
+
+$(EXE) : % : %.o tiempos.o permutaciones.o IQsort.o
+	@echo "#---------------------------"
+	@echo "# Generando $@ "
+	@echo "# Depende de $^"
+	@echo "# Ha cambiado $<"
+	$(CC) $(CFLAGS) -o $@ $@.o  tiempos.o permutaciones.o IQsort.o
+
+permutaciones.o : permutaciones.c permutaciones.h
+	@echo "#---------------------------"
+	@echo "# Generando $@"
+	@echo "# Depende de $^"
+	@echo "# Ha cambiado $<"
+	$(CC) $(CFLAGS) -c $<
+
+
+ tiempos.o : tiempos.c tiempos.h
+	@echo "#---------------------------"
+	@echo "# Generando $@"
+	@echo "# Depende de $^"
+	@echo "# Ha cambiado $<"
+	$(CC) $(CFLAGS) -c $<
+
+ IQsort.o: IQsort.c IQsort.h
+	@echo "#---------------------------"
+	@echo "# Generando $@"
+	@echo "# Depende de $^"
+	@echo "# Ha cambiado $<"
+	$(CC) $(CFLAGS) -c $<
+
+
+ejercicio4_test:
+	@echo Ejecutando ejercicio4
+	@./ejercicio4 -num_min 200 -num_max 2000 -incr 10 -numP 100 -fichSalida ej4.log  
+
+

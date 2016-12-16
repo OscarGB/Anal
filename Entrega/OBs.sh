@@ -10,9 +10,11 @@ read SALIDA
 gnuplot > $SALIDA.jpg <<EOF
 
 set terminal jpeg
-set title "Tiempo $NAME"
+set title "OBs $NAME"
 set xlabel "Dimension array"
-set ylabel "Tiempo"
+set ylabel "OBs"
+plot "$FILE" using 1:3 with lp title "$NAME media", "$FILE" using 1:4 with lp title "$NAME maximo", "$FILE" using 1:5 with lp title "$NAME minimo"
+
 plot "$FILE" using 1:2 w lp title "Tiempo $NAME"
 
 EOF
